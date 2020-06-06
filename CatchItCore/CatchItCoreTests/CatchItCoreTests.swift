@@ -9,26 +9,41 @@
 import XCTest
 @testable import CatchItCore
 
-class CatchItCoreTests: XCTestCase {
+class SearchSeacurityTests: XCTestCase {
+    
+    var security: Security!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        security = Security()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testGivenSearchTermIsEmptySearchMethodReturnsEmptyArray() throws {
+        let result = security.search(for: "")
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(result.isEmpty)
+    }
+    
+    func testGivenSearchTermIsNotFoundSearchMethodReturnsEmptyArray() throws {
+        let result = security.search(for: "NoSecurity")
+
+        XCTAssertTrue(result.isEmpty)
+    }
+    
+    func testGivenSearchTermIsFoundSearchMethodReturnsNonEmptyArray() throws {
+        let result = security.search(for: "Security")
+
+        XCTAssertFalse(result.isEmpty)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func testPerformanceExample() throws {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }
