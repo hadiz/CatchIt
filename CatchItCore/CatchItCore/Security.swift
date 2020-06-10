@@ -7,7 +7,6 @@
 //
 
 public final class Security {
-    
     var network: Network!
     
     public func search(for searchTerm: String) -> Array<String>{      
