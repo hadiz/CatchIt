@@ -35,8 +35,7 @@ class SimpleNetworkTests: XCTestCase {
             case .finished:
                 XCTFail()
             case .failure(let error):
-                XCTFail()
-//                 XCTAssertEqual(error.errorCode, URLError.badURL.rawValue)
+                XCTAssertEqual(error.errorCode, URLError.badURL.rawValue)
             }
         }) {
             XCTAssertNil($0)
