@@ -8,13 +8,13 @@
 
 import Combine
 
-internal final class SimpleNetwork {
+final class SimpleNetwork {
     
     var session: URLSessionProtocol!
     
-    internal func fetchData(with urlString: String) -> AnyPublisher<(data: Data, response: URLResponse), URLError>{
+    func fetchData(from address: String) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
         
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: address) else {
             return Fail<(data: Data, response: URLResponse), URLError>(error: URLError(URLError.badURL)).eraseToAnyPublisher()
         }
 
@@ -22,7 +22,7 @@ internal final class SimpleNetwork {
     }
 }
 
-extension URLSession: URLSessionProtocol{
+extension URLSession: URLSessionProtocol {
     func dataTaskAnyPublisher(for url: URL) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
         return self.dataTaskPublisher(for: url).eraseToAnyPublisher()
     }
