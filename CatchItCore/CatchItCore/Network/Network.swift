@@ -6,6 +6,6 @@
 //  Copyright © 2020 SomeSimpleSolutions. All rights reserved.
 //
 
-internal protocol Network {
+protocol Network {
     func fetchData(with: String) -> Array<String>
 }

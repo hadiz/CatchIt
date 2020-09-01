@@ -10,12 +10,12 @@ import Foundation
 import Combine
 @testable import CatchItCore
 
-internal enum Result {
+enum Result {
     case success
     case failure
 }
 
-final internal class URLSessionMock : URLSessionProtocol {
+final class URLSessionMock : URLSessionProtocol {
     private var expectedResult: Result
     
     init(with expectedResult: Result) {

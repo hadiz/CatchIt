@@ -28,7 +28,7 @@ class SimpleNetworkTests: XCTestCase {
     }
 
     func testEmptyURLPublishesFailure() throws {
-        let pub = network.fetchData(with: "")
+        let pub = network.fetchData(from: "")
         
         pub.sink(receiveCompletion: { completion in
             switch completion {
@@ -45,7 +45,7 @@ class SimpleNetworkTests: XCTestCase {
     func testNotEmptyURLDoesNotPublishFailure() throws {
         network.session = URLSessionMock(with: .success)
         
-        let pub = network.fetchData(with: "apple.com")
+        let pub = network.fetchData(from: "apple.com")
         
         pub.sink(receiveCompletion: { completion in
             switch completion {
@@ -60,7 +60,7 @@ class SimpleNetworkTests: XCTestCase {
     }
     
     func testInvalidURLPublishesFailure() throws {
-        let pub = network.fetchData(with: "Invalid URL")
+        let pub = network.fetchData(from: "Invalid URL")
         
         pub.sink(receiveCompletion: { completion in
             switch completion {
@@ -78,7 +78,7 @@ class SimpleNetworkTests: XCTestCase {
     func testValidURLPublishesResults() throws {
         network.session = URLSessionMock(with: .success)
         
-        let pub = network.fetchData(with: "https://apple.com")
+        let pub = network.fetchData(from: "https://apple.com")
         
         pub.sink(receiveCompletion: { completion in
             switch completion {
@@ -95,7 +95,7 @@ class SimpleNetworkTests: XCTestCase {
     func testFailureURLPublishesFailure() throws {
         network.session = URLSessionMock(with: .failure)
         
-        let pub = network.fetchData(with: "https://apple.com")
+        let pub = network.fetchData(from: "https://apple.com")
         
         pub.sink(receiveCompletion: { completion in
             switch completion {
