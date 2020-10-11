@@ -4,4 +4,7 @@
    <FileRef
       location = "group:CatchItCore/CatchItCore.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:CatchIt/CatchIt.xcodeproj">
+   </FileRef>
 </Workspace>
